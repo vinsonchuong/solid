@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "test": "standard -v --fix && flow && ava"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "babel-preset-diff": "^1.0.3",
+    "flow-bin": "^0.57.3",
+    "standard-esnext": "^4.0.1"
+  },
+  "babel": {
+    "presets": [
+      "diff"
+    ]
+  },
+  "ava": {
+    "babel": "inherit"
+  }
+}
