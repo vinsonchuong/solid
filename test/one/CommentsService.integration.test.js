@@ -1,8 +1,8 @@
 // @flow
 import test from 'ava'
-import { withTempFile } from './helpers'
-import Database from '../src/Database'
-import CommentsService from '../src/CommentsService'
+import { withTempFile } from '../helpers'
+import Database from '../../src/Database'
+import CommentsService from '../../src/one/CommentsService'
 
 withTempFile()
 

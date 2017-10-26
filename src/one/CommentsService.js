@@ -1,5 +1,5 @@
 // @flow
-import type Database from './Database'
+import type Database from '../Database'
 
 type Comment = {
   message: string

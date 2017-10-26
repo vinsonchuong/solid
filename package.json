@@ -9,7 +9,8 @@
     "babel-register": "^6.26.0",
     "flow-bin": "^0.57.3",
     "standard-esnext": "^4.0.1",
-    "tempy": "^0.2.1"
+    "tempy": "^0.2.1",
+    "testdouble": "^3.2.6"
   },
   "babel": {
     "presets": [
