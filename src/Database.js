@@ -11,7 +11,9 @@ export default class Database<Schema, Table: string & $Keys<Schema>> {
     this.filePath = filePath
   }
 
-  async select<T: Table>(table: T): Promise<Array<$ElementType<Schema, T>>> {
+  async select<T: Table>(
+    table: T
+  ): Promise<Array<$ElementType<Schema, T> & { id: string }>> {
     const data = await read(this.filePath)
     return data[table]
   }
