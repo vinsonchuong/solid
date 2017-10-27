@@ -2,7 +2,9 @@
 import type Database from '../Database'
 
 type Comment = {
-  message: string
+  author: string,
+  message: string,
+  spam: boolean
 }
 
 type Schema = {
@@ -31,5 +33,19 @@ export default class {
 
   create(comment: Comment): Promise<Comment & { id: string }> {
     return this.database.insert('comments', comment)
+  }
+
+  update(comment: Comment & { id: string }): Promise<void> {
+    return this.database.update('comments', comment)
+  }
+
+  async markAsSpam(author: string): Promise<void> {
+    const comments = await this.getAll()
+    const updatedComments = comments
+      .filter(comment => comment.author === author)
+      .map(commentByAuthor => ({ ...commentByAuthor, spam: true }))
+    for (const updatedComment of updatedComments) {
+      await this.update(updatedComment)
+    }
   }
 }
