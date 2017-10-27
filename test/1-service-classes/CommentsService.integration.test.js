@@ -2,7 +2,7 @@
 import test from 'ava'
 import { withTempFile } from '../helpers'
 import Database from '../../src/Database'
-import CommentsService from '../../src/one/CommentsService'
+import CommentsService from '../../src/1-service-classes/CommentsService'
 
 withTempFile()
 

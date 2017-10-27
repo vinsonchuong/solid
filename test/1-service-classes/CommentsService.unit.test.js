@@ -2,7 +2,7 @@
 import test from 'ava'
 import td from 'testdouble'
 import Database from '../../src/Database'
-import CommentsService from '../../src/one/CommentsService'
+import CommentsService from '../../src/1-service-classes/CommentsService'
 
 const FakeDatabase = td.constructor(Database)
 
