@@ -23,7 +23,7 @@ export default class {
   }
 
   async getOne(id: string): Promise<Comment> {
-    const comments = await this.getAll()
+    const comments = await this.database.select('comments')
     const comment = comments.find(comment => comment.id === id)
     if (!comment) {
       throw new Error(`Could not find Comment with id ${id}`)
@@ -40,10 +40,10 @@ export default class {
   }
 
   async markAsSpam(author: string): Promise<void> {
-    const comments = await this.getAll()
+    const comments = await this.database.select('comments')
     for (const comment of comments) {
       if (comment.author === author) {
-        await this.update({ ...comment, spam: true })
+        await this.database.update('comments', { ...comment, spam: true })
       }
     }
   }
