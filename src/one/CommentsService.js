@@ -35,17 +35,16 @@ export default class {
     return this.database.insert('comments', comment)
   }
 
-  update(comment: Comment & { id: string }): Promise<void> {
-    return this.database.update('comments', comment)
+  async update(comment: Comment & { id: string }): Promise<void> {
+    await this.database.update('comments', comment)
   }
 
   async markAsSpam(author: string): Promise<void> {
     const comments = await this.getAll()
-    const updatedComments = comments
-      .filter(comment => comment.author === author)
-      .map(commentByAuthor => ({ ...commentByAuthor, spam: true }))
-    for (const updatedComment of updatedComments) {
-      await this.update(updatedComment)
+    for (const comment of comments) {
+      if (comment.author === author) {
+        await this.update({ ...comment, spam: true })
+      }
     }
   }
 }
